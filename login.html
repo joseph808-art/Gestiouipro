@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion - GestiOui</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-blue: #2A5EE6;
+      --dark-bg: #0F172A;
+      --light-bg: #F8FAFC;
+    }
+    body {
+      background: var(--light-bg);
+      color: var(--dark-bg);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #E2E8F0;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--primary-blue);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1E3A8A;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Connexion</h2>
+    <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button onclick="login()">Se connecter</button>
+    <div class="error" id="error-message" style="display: none;">Nom d'utilisateur ou mot de passe incorrect</div>
+  </div>
+
+  <script>
+    // Connexion fictive : utilisateur = "junior", mot de passe = "lol"
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMessage = document.getElementById('error-message');
+
+      if (username === "junior" && password === "lol") {
+        localStorage.setItem('gestiOuiSession', 'active');
+        window.location.href = "dashboard.html";
+      } else {
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
